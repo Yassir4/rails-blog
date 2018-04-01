@@ -1,0 +1,52 @@
+ @import "bootstrap"; 
+
+ $gray-medium-light: #eaeaea;
+
+ .navbar-brand{
+    margin-left: 35px;
+    margin-left: 35px;
+   
+ }
+.nav-link a{
+    color: #2b2525;
+    font-weight: 300;
+    
+}
+
+#navbarText{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.nav-item active {
+    margin-left: 30px;
+}
+.navbar-brand {
+    margin-top: 7px;
+}
+footer {
+    margin-top: 45px;
+    position: fixed;
+    left: 50px;
+    bottom: 0;
+    width: 90%;
+    padding-top: 5px;
+    border-top: 1px solid $gray-medium-light;
+    color: gray;
+    a {
+      color: gray;
+      &:hover {
+        color: gray;
+      }
+    }
+    small {
+      float: left;
+    }
+    ul {
+      float: right;
+      list-style: none;
+      li {
+        float: left;
+        margin-left: 15px;
+      }
+    }
+  }

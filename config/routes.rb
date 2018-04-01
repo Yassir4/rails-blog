@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  get 'stati_pages/Home'
+  root to: 'static_pages#home'
 
-  get 'stati_pages/About'
+  get 'static_pages/home'
 
-  get 'stati_pages/Contact'
+  get 'static_pages/about'
+
+  get 'static_pages/contact'
 
   resources :writers
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
