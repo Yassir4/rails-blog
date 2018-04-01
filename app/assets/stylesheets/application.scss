@@ -35,7 +35,7 @@ footer {
     a {
       color: gray;
       &:hover {
-        color: gray;
+        color: #0f99ea
       }
     }
     small {
@@ -49,4 +49,23 @@ footer {
         margin-left: 15px;
       }
     }
-  }
+}
+p#about_paragraph{
+    font-family: 'Lora', serif;   
+
+}
+p#contact_paragraph{
+    font-size: 20px;
+    font-family: 'Lora', serif;   
+
+}
+h1.static_pages_titles{
+    font-family: 'Prata', serif;
+    font-size: 7.8em;
+    letter-spacing: -.055em;
+    margin: 0 0 .2em;
+    line-height: 1.3em;
+    font-size: 90px;
+    position: relative;
+    margin-top: 60px;
+}
