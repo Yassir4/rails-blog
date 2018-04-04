@@ -1,5 +1,13 @@
-<h1>New Writer</h1>
-
-<%= render 'form', writer: @writer %>
-
-<%= link_to 'Back', writers_path %>
+<h1 id="head-form">Sign Up</h1>
+<% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, class: "alert alert-info" %>
+<% end %>
+<div id ="athentification-form">
+ <%= bootstrap_form_for @writer do |f| %>
+  <%= f.text_field :name %>
+  <%= f.email_field :email %>
+  <%= f.password_field :password, help: "Must be at least 8 characters long"%>
+  <%= f.password_field :password_confirmation, label: "Confirm Password" %>
+  <%= f.submit "Create my account" %>
+ <% end %>
+</div>

@@ -12,7 +12,7 @@
   <tbody>
     <% @writers.each do |writer| %>
       <tr>
-        <td><%= link_to 'Show', writer %></td>
+        <td><%= link_to 'Show', writer.name %></td>
         <td><%= link_to 'Edit', edit_writer_path(writer) %></td>
         <td><%= link_to 'Destroy', writer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
