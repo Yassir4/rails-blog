@@ -6,7 +6,7 @@ class Writer < ApplicationRecord
     has_secure_password
     validates :password, length: { minimum: 8, maximum: 15} 
   
-  
+
   private
 
   def downcase_email

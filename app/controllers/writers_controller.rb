@@ -6,11 +6,15 @@ class WritersController < ApplicationController
 
 
   def show
-    @writer = Writer.find_by(params[:id])
+    if session[:writer_id] != nil 
+      @writer = Writer.find_by(params[:id])
+    else
+      redirect_to root_path
+    end
   end
 
   def new
-    @writer = Writer.new
+    
   end
 
 
@@ -28,6 +32,10 @@ class WritersController < ApplicationController
     end
   end
 
+  def destroy
+    Writer.find_by(params[:id]).destroy
+    render :index
+  end
   private
 
   def writer_params
