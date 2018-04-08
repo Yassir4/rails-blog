@@ -1,4 +1,6 @@
 <p id="notice"><%= notice %></p>
-
+<%=@writer.name %>
+<%=@writer.email %>
+<%=@writer.password_digest %>
 <%= link_to 'Edit', edit_writer_path(@writer) %> |
 <%= link_to 'Back', writers_path %>

@@ -3,6 +3,6 @@ class CreateWriters < ActiveRecord::Migration[5.1]
     create_table :writers do |t|
 
       t.timestamps
-    end
+    end 
   end
 end
