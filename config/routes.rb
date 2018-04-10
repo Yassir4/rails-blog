@@ -7,10 +7,13 @@ Rails.application.routes.draw do
 
   get '/login', to: 'sessions#new'
   post '/login',to: 'sessions#create'
+  get '/logout', to: 'sessions#destroy'
+
 
   get '/signup',  to: 'writers#new'
   post '/signup', to: 'writers#create'
 
+  
   resources :writers
   resource :sessions, only: [:new]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
