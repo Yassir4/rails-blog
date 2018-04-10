@@ -6,6 +6,16 @@ class Writer < ApplicationRecord
     has_secure_password
     validates :password, length: { minimum: 8, maximum: 15} 
   
+   
+    class << self
+      def new_remember_token
+        SecureRandom.urlsafe_base64
+      end
+  
+      def encrypt(token)
+        Digest::SHA1.hexdigest(token.to_s)
+      end
+    end
 
   private
 
@@ -13,5 +23,8 @@ class Writer < ApplicationRecord
     self.email = email.downcase if email.present?
   end
   
-
+  def create_remember_token
+    self.remember_token = encrypt(Writer.new_remember_token)
+  end
+  
 end
