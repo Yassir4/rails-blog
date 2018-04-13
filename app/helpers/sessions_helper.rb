@@ -1,7 +1,7 @@
 module SessionsHelper
     
 
-    # this methode is used in the view(_header)
+    # this methode is used in the view
     # to check if the user is loggedin 
     def logged_in?
         !current_writer.nil?
