@@ -1,8 +1,16 @@
-<p id="notice"><%= notice %></p>
-<%= link_to(image_tag(avatar_url(@writer)), @writer )%>
-<%=@writer.name %>
-<%=@writer.email %>
-<%=@writer.password_digest %>
-
-<%= link_to 'Edit', edit_writer_path(@writer) %> |
-<%= link_to 'Back', writers_path %>
+<div class ="container u-maxWidth640 u-paddingTop20 u-paddingBottom30 u-xs-paddingBottom20">
+    <div class = "hero hero--profile u-flexTop">
+        <div class="u-flex1"></div>
+        <h1 class="ui-h2 hero-title"> <%=@writer.name%></h1>
+        <div class="hero-avatar u-flex0 u-marginLeft20 u-relative"></div>
+        <div class="avatar">
+            <div class="u-relative u-inlineBlock u-flex0">
+                <%= link_to(image_tag(avatar_url(@writer)), @writer ,
+                    class: "avatar-image u-size100x100 u-xs-size80x80 u-width100 js-profileAvatarImage")%>
+            </div>    
+            <div class="avatar-halo u-absolute u-textColorGreenNormal svgIcon" 
+                style="width: calc(100% + 14px); height: calc(100% + 14px); top:-7px; left:-7px">
+            </div> 
+        </div>      
+    </div>
+</div>

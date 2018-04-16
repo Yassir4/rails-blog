@@ -1,12 +1,13 @@
 <% @title = "Home" %>
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4">Rails Blog </h1>
-    <p class="lead">Welcome to the Rails Blog , this is how the greate developers start their afternoons .
-        Login and share your knowledge</p>
-   <div class="btn btn-primary btn-lg">
+<% unless logged_in? %>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Rails Blog </h1>
+      <p class="lead">Welcome to the Rails Blog , this is how the greate developers start their afternoons .
+          Login and share your knowledge</p>
+    </div>      
+    <div class="btn btn-primary btn-lg">
       <%= link_to "Sign Up", new_writer_path %>
     </div>
-   </div>
-</div>
-
+  </div>
+<% end %>

@@ -27,4 +27,5 @@ class Writer < ApplicationRecord
     self.remember_token = encrypt(Writer.new_remember_token)
   end
   
+  
 end
