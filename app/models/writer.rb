@@ -1,4 +1,6 @@
 class Writer < ApplicationRecord
+  has_many :articles
+
     before_validation :downcase_email
     validates :email, :uniqueness => { :case_sensitive => false }
     validates :name, presence: true, length: { minimum: 2, maximum: 30}
