@@ -7,17 +7,20 @@ RSpec.describe WritersController, type: :controller do
       get :index
       expect(assigns(:writers)).to eq(all_writers)
     end
+
     it "renders the :index view" do
       get :index
       expect(response).to render_template(:index)
     end
   end
+
   describe "GET #new" do
     it "renders the new view" do
       get :new
       expect(response).to render_template(:new)
     end
   end
+  
   describe "POST #create" do 
     it "adds new writer and redirect to root_path" do
       writers_count = Writer.count

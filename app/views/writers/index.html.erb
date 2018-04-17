@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Writers</h1>
+<h1>All writers</h1>
 
 <table>
   <thead>
@@ -12,14 +12,13 @@
   <tbody>
     <% @writers.each do |writer| %>
       <tr>
-        <td><%= link_to 'Show', writer %></td>
-        <td><%= link_to 'Edit', edit_writer_path(writer) %></td>
-        <td><%= link_to 'Destroy', writer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+       <td><%= link_to(image_tag(avatar_url(writer , size: 50)), writer) %> </td>
+        <td><%= link_to writer.name, writer %></td>
+        <% if current_writer.admin? %>
+          <td><%= link_to 'Destroy', writer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Writer', new_writer_path %>

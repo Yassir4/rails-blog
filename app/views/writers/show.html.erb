@@ -1,8 +1,31 @@
-<p id="notice"><%= notice %></p>
-<%= link_to(image_tag(avatar_url(@writer)), @writer )%>
-<%=@writer.name %>
-<%=@writer.email %>
-<%=@writer.password_digest %>
+<div class= "profile_wrapper">  
+    <div class= "header">       
+        <%= image_tag(avatar_url(@writer , size: 142), class: "profile_photo") %>        
+        <div class= "header_content">
+            <div class= "writer_name">
+                <%= @writer.name %>
+            </div>
+             <%=  @writer.created_at.strftime("Joined %B %Y") %>
+        </div>
+    </div>
+    <div class= "feed">
+        <p id= "title">Feeds</p>
+        <ul>
+            <li>Articles</li>
+            <li>Followers</li>
+            <li>Following</li>
+            <li>Topics</li>
+        </ul>
+    </div>
+    <div class= "list_header">
+        <%=@writer.articles.count %>
+        <%= 'Article'.pluralize(@writer.articles.count)  %>
+    </div>
+    <div class= "Articles">
+        <% @writer.articles.each do |article| %>
+            <h1><%=article.title%></h1>
+            <p><%=article.body%></p>
+        <% end %>    
+    </div>
 
-<%= link_to 'Edit', edit_writer_path(@writer) %> |
-<%= link_to 'Back', writers_path %>
+</div>
