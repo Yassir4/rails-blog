@@ -1,0 +1,16 @@
+<% @writer.articles.each do |article| %>
+<div class="card" >
+    <div class="card-body">
+        <h5 class="card-title"><%= article.title %></h5>
+        <div class= "writer-info">
+            <%= image_tag(avatar_url(@writer , size: 22), class: "profile_photo") %>
+            <%=link_to @writer.name, @writer %>
+            <p>created at 00h00<p>
+        </div>
+        <p class="card-text">
+        <%= article.body[0..313] %>
+        ... </p>
+        <a href="#" class="card-link">Read More</a>
+  </div>
+</div>
+<% end %>

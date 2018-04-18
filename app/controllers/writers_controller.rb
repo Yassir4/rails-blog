@@ -9,12 +9,7 @@ class WritersController < ApplicationController
 
 
   def show
-    writer = Writer.find_by(id: params[:id])
-    if current_writer?(writer)
-      current_writer
-    else
-      redirect_to root_path
-    end
+    @writer = Writer.find_by(id: params[:id])
   end
 
   def new
@@ -37,8 +32,10 @@ class WritersController < ApplicationController
   end
 
   def destroy
-    Writer.find_by(params[:id]).destroy
-    render :index
+    if current_writer.admin?
+      Writer.find_by(params[:id]).destroy
+      render :index
+    end
   end
   private
 

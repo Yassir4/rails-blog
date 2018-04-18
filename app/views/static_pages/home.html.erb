@@ -1,5 +1,6 @@
 <% @title = "Home" %>
-<% unless logged_in? %>
+
+<% if !logged_in? %>
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
       <h1 class="display-4">Rails Blog </h1>
@@ -10,4 +11,23 @@
       <%= link_to "Sign Up", new_writer_path %>
     </div>
   </div>
+<% else %>
+<div class= "profile_wrapper">
+  <div class= "add-article">
+    <div class=writer_info>
+       <%= image_tag(avatar_url(current_writer, size: 42) ) %>
+       <%= link_to current_writer.name, current_writer, id: 'writer_name' %>
+       <%= link_to "Share your knowledge", new_article_path, id: 'description' %>
+    </div>
+  </div>
+  <div class= "navlist">
+        <p id= "navlist-title">Feeds</p>
+        <ul class= "navlist-feeds">
+            <li id= "a">Top Articles</li>
+            <li>New Articles</li>
+            <li>Bookmarked Articles</li>
+        </ul>
+  </div>
+</div>
 <% end %>
+

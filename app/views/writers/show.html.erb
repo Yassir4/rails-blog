@@ -22,10 +22,6 @@
         <%= 'Article'.pluralize(@writer.articles.count)  %>
     </div>
     <div class= "Articles">
-        <% @writer.articles.each do |article| %>
-            <h1><%=article.title%></h1>
-            <p><%=article.body%></p>
-        <% end %>    
+         <%= render 'shared/articles' %>  
     </div>
-
 </div>

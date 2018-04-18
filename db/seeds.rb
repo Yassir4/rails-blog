@@ -13,6 +13,11 @@ for i in 0..50 do
     Writer.create!(name: "userName#{i}", email: "email@example#{i}.com", 
                         password: "12345678")                    
 end
+for i in 0..10 do 
+    writer =  Writer.find(1)
+    article = Article.new(title: Faker::Lorem.sentence, body: Faker::Lorem.paragraph(90) )
+    writer.articles << article
+end
 for i in 1..20 do 
    writer =  Writer.find(i)
    article = Article.new(title: Faker::Lorem.sentence, body: Faker::Lorem.paragraph(90) )

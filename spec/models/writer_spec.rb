@@ -61,7 +61,9 @@ RSpec.describe Writer, :type => :model  do
             @writer.admin = true
             expect(@writer.admin?).to be(true) 
         end
-
      end
+    end
+    describe 'Association' do 
+        it { should have_many(:articles) }
     end
 end
