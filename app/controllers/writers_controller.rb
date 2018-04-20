@@ -1,5 +1,6 @@
 class WritersController < ApplicationController
-  before_action :logged_in_writer, only: [:show, :index, :edit, :destroy] 
+  before_action :logged_in_writer, :logged_in_writer?, 
+                    only: [:show, :index, :edit, :destroy] 
 
 
 
@@ -10,9 +11,11 @@ class WritersController < ApplicationController
 
   def show
     @writer = Writer.find_by(id: params[:id])
+    @articles = @writer.articles.order(created_at: :desc)
   end
 
   def new
+  
   end
 
 

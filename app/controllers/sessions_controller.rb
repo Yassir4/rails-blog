@@ -9,10 +9,10 @@ class SessionsController < ApplicationController
     writer = Writer.find_by_email(params[:session][:email].downcase)
     if writer && writer.authenticate(params[:session][:password])
         # update the remember token in the cookies and in the DB
+        session[:writer_id] = writer.id
         if params[:session][:remember_me] == '1'
           remember(writer)
         end
-      session[:writer_id] = writer.id
       redirect_to current_writer
     else
       flash.now[:danger] = "Password or Email was incorrect"
@@ -21,8 +21,8 @@ class SessionsController < ApplicationController
     end
 
   def destroy
-    session[:writer_id] = nil
-    cookies.delete :remember_token
-    redirect_to login_path
+    logout_writer
   end
+
+  
 end

@@ -282,3 +282,34 @@ p.card-text{
     margin-top: 2px;
     margin-bottom: -4px;
 }
+
+// new article form
+.article_form{
+    border: 3px;
+    margin-left: 20%;
+    margin-top: 7%;
+    --x-height-multiplier: 0.375;
+    --baseline-multiplier: 0.17;
+    font-family: medium-content-serif-font,Georgia,Cambria,"Times New Roman",Times,serif;
+    letter-spacing: .01rem;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 19px;
+    line-height: 1.58;
+    letter-spacing: -.003em;
+}
+input#article_title{
+    margin-top: 5px;
+    width: 700px;
+    height: 50px;
+    border: none;
+}
+textarea#article_body{
+    height:100px;    
+    width: 700px;
+    border: none;
+}
+.article_form a#writer_name{
+    font-size: 13.5px;
+    color: black;
+}
