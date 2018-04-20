@@ -1,0 +1,11 @@
+<div class="article_form">
+    <%= image_tag(avatar_url(current_writer , size: 42), class: "profile_photo") %>  
+    <%= link_to current_writer.name, current_writer, id: 'writer_name' %>
+    <%=  form_for :article, url: articles_path do |f| %>
+         <%= f.text_field :title, placeholder:  "Title", required: true,
+                                            :minlength => 10, :maxlength => 100 %> <br />
+         <%= f.text_area :body, placeholder: "Tell your story ...", required: true,
+                                            :minlength => 500, :maxlength => 10000 %><br />
+        <%= f.submit class: "btn btn-outline-dark" %>
+    <% end %>
+</div>

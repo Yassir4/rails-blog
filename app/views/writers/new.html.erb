@@ -1,10 +1,10 @@
 <h1 id="head-form">Sign Up</h1>
 <div id ="athentification-form">
  <%= bootstrap_form_for :writer, url: writers_path do |f| %>
-  <%= f.text_field :name %>
-  <%= f.email_field :email %>
-  <%= f.password_field :password, help: "Must be at least 8 characters long"%>
-  <%= f.password_field :password_confirmation, label: "Confirm Password" %>
+  <%= f.text_field :name, :required => true %>
+  <%= f.email_field :email, :required => true %>
+  <%= f.password_field :password, help: "Must be at least 8 characters long", required: true%>
+  <%= f.password_field :password_confirmation, label: "Confirm Password", required: true %>
   <%= f.submit "Create my account" %>
  <% end %>
 </div>
