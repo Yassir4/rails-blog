@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe WritersController, type: :controller do
+  render_views
   describe "GET #index" do
     it "assigns @writers" do
       all_writers = Writer.all

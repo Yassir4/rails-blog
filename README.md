@@ -1,24 +1,32 @@
-# README
+# Rails Blog
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+ clone the repo
+```
+https://github.com/Yassir4/rails-blog.git
+```
 
-* System dependencies
+```
+$ bundle install 
+```
 
-* Configuration
+next 
 
-* Database creation
+```
+$ rails db:migrate
+$ rails db:seed
+```
 
-* Database initialization
+run the test suite to verify that everything is working correctly:
 
-* How to run the test suite
+```
+$ rspec spec
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+If the test suite passes, you'll be ready to run the app in a local server:
 
-* Deployment instructions
-
-* ...
+```
+$ rails server
+```

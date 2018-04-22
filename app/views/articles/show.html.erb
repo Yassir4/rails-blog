@@ -1,0 +1,13 @@
+<div class= "full-article"> 
+    <div class= "header-writer-info">
+        <%= image_tag(avatar_url(@writer , size: 67), class: "profile_photo") %>
+        <div class= "info-content">
+            <%=link_to @writer.name, @writer %>
+            <p>Written <%=  time_ago_in_words(@article.created_at) %> ago<p>
+        </div>
+    </div>
+    <div class= "article-content">
+        <h1 id= "title"><%= @article.title %></h1>
+        <p id= "body"> <%= @article.body %> </p>
+    </div>
+</div>
