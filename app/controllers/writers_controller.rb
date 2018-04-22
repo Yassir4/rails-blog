@@ -1,7 +1,7 @@
 class WritersController < ApplicationController
-  before_action :logged_in_writer, :logged_in_writer?, 
+  before_action :logged_in_writer?, 
                     only: [:show, :index, :edit, :destroy] 
-
+  before_action :logout_writer, only: :new 
 
 
   def index
@@ -9,8 +9,8 @@ class WritersController < ApplicationController
   end
 
 
-  def show
-    @writer = Writer.find_by(id: params[:id])
+  def show 
+    @writer = Writer.find(params[:id])
     @articles = @writer.articles.order(created_at: :desc)
   end
 
@@ -35,10 +35,10 @@ class WritersController < ApplicationController
   end
 
   def destroy
-    if current_writer.admin?
-      Writer.find_by(params[:id]).destroy
-      render :index
-    end
+    writer =  Writer.find(params[:id])
+    writer.destroy
+    flash[:success]= "Profile deleted"
+    redirect_to writers_url
   end
   private
 

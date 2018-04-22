@@ -1,12 +1,11 @@
 class Article < ApplicationRecord
-  before_create :set_slug
-
   belongs_to :writer  
 
+  after_validation :set_slug, only: [:create, :update]
+  
   validates :title, length: { minimum: 10, maximum: 100 }, presence: true
   validates :body, length: { minimum: 500, maximum: 10000 }, presence: true
   validates :writer_id, presence: true
-
 
 
   # Overide Rails default to_param method
@@ -14,11 +13,10 @@ class Article < ApplicationRecord
     "#{id}-#{slug}"
   end
 
+  private  
 
-  private
-  
   def set_slug
-    self.slug = title.parameterize
+    self.slug = title.to_s.parameterize
   end
   
 end

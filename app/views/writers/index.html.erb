@@ -14,8 +14,9 @@
       <tr>
        <td><%= link_to(image_tag(avatar_url(writer , size: 50)), writer) %> </td>
         <td><%= link_to writer.name, writer %></td>
-        <% if current_writer.admin? %>
-          <td><%= link_to 'Destroy', writer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_writer.admin? && !current_writer?(writer)%>
+          <td><%= link_to 'Destroy', writer , method: :delete, 
+                                   data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
     <% end %>

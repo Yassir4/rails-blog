@@ -11,9 +11,7 @@ module SessionsHelper
     # to prevent unlogged_in users from accessing 
     # to the writers profiles and articles
     def logged_in_writer?
-        if current_writer
-            true
-        else
+        if !current_writer
             flash[:warning] = "Please login first"
             redirect_to login_path
         end
@@ -22,23 +20,34 @@ module SessionsHelper
     #this method is used to DRY the need of assign in 
     #the writer every time we need an info ex (current_user.id)
     def current_writer
-        @writer ||= Writer.find_by(id: session[:writer_id])              
+        # debugger
+        if  !session[:writer_id].nil? 
+            @current_writer ||= Writer.find(session[:writer_id]) 
+        elsif ( remember_token =  cookies[:remember_token] )
+            remember_token = Writer.encrypt(cookies[:remember_token])
+            writer = Writer.find_by(remember_token: remember_token )
+            if (writer)
+                session[:writer_id] = writer.id    
+            end        
+        end    
     end
     
     # used in the writers_controller to prevent  writers 
     # from editing another writer info
     def current_writer?(writer)     
-        writer == current_writer
+        current_writer == writer
     end
 
     #logged in the user with the cookies  used as a before action
-    def logged_in_writer     
-        if cookies[:remember_token]
-           remember_token = Writer.encrypt(cookies[:remember_token])
-           writer = Writer.find_by(remember_token: remember_token )
-           session[:writer_id] = writer.id
-        end
-    end
+    # def logged_in_writer     
+    #     if cookies[:remember_token]
+    #        remember_token = Writer.encrypt(cookies[:remember_token])
+    #        writer = Writer.find_by(remember_token: remember_token )
+    #        session[:writer_id] = writer.id
+    #     else
+    #         logged_in_writer?
+    #     end
+    # end
 
     #used to remember the writer if checked the remember_me box
     # in the login form
@@ -51,6 +60,5 @@ module SessionsHelper
     def logout_writer
         session[:writer_id] = nil
         cookies.delete :remember_token
-        redirect_to login_path
     end
 end

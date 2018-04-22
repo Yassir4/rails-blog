@@ -4,7 +4,8 @@ class ArticlesController < ApplicationController
     end
     
     def show
-        @article = Article.find params[:id]
+        @article = Article.find(params[:id])
+        @writer = Writer.find(@article.writer_id)
     end
 
     def create
@@ -19,6 +20,10 @@ class ArticlesController < ApplicationController
     end
 
     def destroy
+        article = Article.find(params[:id])
+        article.destroy
+        flash[:success] = "article deleted"
+        redirect_to current_writer
     end
         
     private

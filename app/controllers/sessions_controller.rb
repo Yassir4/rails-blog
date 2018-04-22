@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-    
+    before_action :logout_writer, only: :new 
 
   def new
     
@@ -22,6 +22,7 @@ class SessionsController < ApplicationController
 
   def destroy
     logout_writer
+    redirect_to login_path
   end
 
   
