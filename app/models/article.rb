@@ -8,7 +8,7 @@ class Article < ApplicationRecord
   validates :writer_id, presence: true
 
 
-  # Overide Rails default to_param method
+  # Override Rails default to_param method
   def to_param
     "#{id}-#{slug}"
   end

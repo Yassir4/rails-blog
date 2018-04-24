@@ -9,7 +9,7 @@ module SessionsHelper
 
     # used in the writers_contoller
     # to prevent unlogged_in users from accessing 
-    # to the writers profiles and articles
+    # some pages
     def logged_in_writer?
         if !current_writer
             flash[:warning] = "Please login first"
@@ -19,6 +19,7 @@ module SessionsHelper
     
     #this method is used to DRY the need of assign in 
     #the writer every time we need an info ex (current_user.id)
+    # also sign in the writer with cookies
     def current_writer
         # debugger
         if  !session[:writer_id].nil? 
@@ -32,22 +33,11 @@ module SessionsHelper
         end    
     end
     
-    # used in the writers_controller to prevent  writers 
-    # from editing another writer info
+    # used in the view to prevent  writers 
+    # ex(preventing a user from seeing edit button in another user profile)
     def current_writer?(writer)     
         current_writer == writer
     end
-
-    #logged in the user with the cookies  used as a before action
-    # def logged_in_writer     
-    #     if cookies[:remember_token]
-    #        remember_token = Writer.encrypt(cookies[:remember_token])
-    #        writer = Writer.find_by(remember_token: remember_token )
-    #        session[:writer_id] = writer.id
-    #     else
-    #         logged_in_writer?
-    #     end
-    # end
 
     #used to remember the writer if checked the remember_me box
     # in the login form

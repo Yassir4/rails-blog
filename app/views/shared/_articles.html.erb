@@ -16,7 +16,8 @@
             <%= link_to 'Delete', article , method: :delete, 
                                    data: { confirm: 'Are you sure?' },
                                    class: "card-link" %></td>
+            <%=link_to "edit", edit_article_path(article). class: 'card-link' %>
         <% end %>
-  </div>
+    </div>
 </div>
 <% end %>
