@@ -137,6 +137,8 @@ div.header{
 
 div.header_content{
     padding-left: 20px;
+    display: flex;
+    flex-direction: column;
 }
 .writer_name{
     font-weight: bold;
@@ -144,6 +146,7 @@ div.header_content{
     color: #262626;
     font-size: 26px;
     font-family: 'q_serif',Georgia,Times,"Times New Roman","Hiragino Kaku Gothic Pro","Meiryo",serif;
+    margin: 2px;
 }
 .list_header{
     padding-top: 10px;
@@ -345,3 +348,33 @@ textarea#article_body{
     letter-spacing: -.003em;
     font-family: 'q_serif',Georgia,Times,"Times New Roman","Hiragino Kaku Gothic Pro","Meiryo",serif
 }
+// follow and unfollow buttons
+.follow-button {
+    margin: 12px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    border-color: #03a87c;
+    background-color: white;
+    color: #03a87c;
+    margin-left: 20px;
+    &:visited, &:focus, &:hover {
+      border-color: #2D6396;
+      color: #2D6396;
+    }
+  }
+  
+  .unfollow-button {
+    margin: 12px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    border-color: #03a87c;
+    background-color: #03a87c;
+    color: white;
+    margin-left: 20px;
+    &:hover {
+        border-color: #28a745;
+        background-color: #28a745;
+        color: white;
+    }
+  }
+  

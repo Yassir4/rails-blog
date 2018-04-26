@@ -3,8 +3,8 @@
     <div class="card-body">
         <h5 class="card-title"><%= article.title %></h5>
         <div class= "writer-info">
-            <%= image_tag(avatar_url(@writer , size: 22), class: "profile_photo") %>
-            <%=link_to @writer.name, @writer %>
+            <%= image_tag(avatar_url(article.writer , size: 22), class: "profile_photo") %>
+            <%=link_to article.writer.name, article.writer %>
             <p>Written <%=  time_ago_in_words(article.created_at) %> ago<p>
         </div>
         <p class="card-text">
@@ -16,7 +16,8 @@
             <%= link_to 'Delete', article , method: :delete, 
                                    data: { confirm: 'Are you sure?' },
                                    class: "card-link" %></td>
+            <%=link_to "edit", edit_article_path(article), class: 'card-link' %>
         <% end %>
-  </div>
+    </div>
 </div>
 <% end %>

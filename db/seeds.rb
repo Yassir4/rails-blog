@@ -9,19 +9,35 @@ writer = Writer.create(name: 'Hartani Yassir', email: 'hartaniyassir@gmail.com',
                         password: '12345678', admin: true)
 
 
+# create writers
 for i in 0..50 do
-    Writer.create!(name: "userName#{i}", email: "email@example#{i}.com", 
-                        password: "12345678")                    
+    Writer.create!(name: "userName#{i}", email: "email@example#{i}.com",
+                        password: "12345678")
 end
+# create article for the admin
 for i in 0..10 do 
     writer =  Writer.find(1)
     article = Article.new(title: Faker::Lorem.sentence, body: Faker::Lorem.paragraph(90) )
     writer.articles << article
 end
-for i in 1..20 do 
-   writer =  Writer.find(i)
-   article = Article.new(title: Faker::Lorem.sentence, body: Faker::Lorem.paragraph(90) )
-   writer.articles << article
 
+# create article for other writers
+for i in 1..50 do
+    writer =  Writer.find(i)
+    for j in 1..5
+        article = Article.new(title: Faker::Lorem.sentence, body: Faker::Lorem.paragraph(90) )
+        writer.articles << article
+    end
 end
 
+# create relationships between writers
+for i in 1..30
+    following_writer = Writer.find(i)
+    for j in 1..30
+        if i != j
+            follwer_writer = Writer.find(j)
+            following_writer.follow(follwer_writer.id)
+        end    
+    end
+end
+    

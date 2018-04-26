@@ -1,13 +1,30 @@
 <div class= "profile_wrapper">  
     <div class= "header">       
-        <%= image_tag(avatar_url(@writer , size: 142), class: "profile_photo") %>        
+        <%= image_tag(avatar_url(@writer , size: 142), class: "profile_photo") %>  
         <div class= "header_content">
             <div class= "writer_name">
                 <%= @writer.name %>
+
             </div>
             <%=  @writer.created_at.strftime("Joined %B %Y") %>
+            <% if !current_writer?(@writer) %>
+                <% if current_writer_is_following(current_writer.id, @writer.id)  %>
+                    <%= link_to 'Following', unfollow_writer_path,
+                                        remote: true,
+                                        class: 'btn unfollow-button',
+                                        id: 'unfollow-button',
+                                        method: :post %>    
+                <% else %>
+                    <%= link_to 'Follow', follow_writer_path,
+                                        remote: true,
+                                        class: 'btn follow-button',
+                                        id: 'follow-button',
+                                        method: :post %>
+                <% end %>
+            <% end %>
         </div>
     </div>
+
     <div class= "feed">
         <p id= "title">Feeds</p>
         <ul>
@@ -17,11 +34,14 @@
             <li>Topics</li>
         </ul>
     </div>
+
     <div class= "list_header">
         <%=@writer.articles.count %>
         <%= 'Article'.pluralize(@writer.articles.count)  %>
     </div>
+
     <div class= "Articles">
          <%= render 'shared/articles' %>  
     </div>
+
 </div>

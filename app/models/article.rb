@@ -1,6 +1,6 @@
 class Article < ApplicationRecord
   belongs_to :writer  
-
+  scope :of_followed_writers, -> (following_writers) { where writer_id: following_writers }
   after_validation :set_slug, only: [:create, :update]
   
   validates :title, length: { minimum: 10, maximum: 100 }, presence: true
@@ -8,7 +8,7 @@ class Article < ApplicationRecord
   validates :writer_id, presence: true
 
 
-  # Overide Rails default to_param method
+  # Override Rails default to_param method
   def to_param
     "#{id}-#{slug}"
   end
