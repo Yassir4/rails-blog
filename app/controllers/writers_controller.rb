@@ -5,7 +5,7 @@ class WritersController < ApplicationController
 
 
   def index
-    @writers = Writer.all
+    @writers = Writer.paginate(:page => params[:page], :per_page => 15)
   end
 
 

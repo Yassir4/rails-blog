@@ -1,0 +1,8 @@
+$('.Articles').append("<%= j render 'shared/articles'  %>");
+console.log("works");
+<% if @articles.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate @articles %>');
+<% else %>
+  $('.pagination').remove();
+  $('.next').remove();
+<% end %>
