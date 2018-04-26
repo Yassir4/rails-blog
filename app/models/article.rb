@@ -1,6 +1,6 @@
 class Article < ApplicationRecord
   belongs_to :writer  
-
+  scope :of_followed_writers, -> (following_writers) { where writer_id: following_writers }
   after_validation :set_slug, only: [:create, :update]
   
   validates :title, length: { minimum: 10, maximum: 100 }, presence: true

@@ -3,8 +3,8 @@
     <div class="card-body">
         <h5 class="card-title"><%= article.title %></h5>
         <div class= "writer-info">
-            <%= image_tag(avatar_url(@writer , size: 22), class: "profile_photo") %>
-            <%=link_to @writer.name, @writer %>
+            <%= image_tag(avatar_url(article.writer , size: 22), class: "profile_photo") %>
+            <%=link_to article.writer.name, article.writer %>
             <p>Written <%=  time_ago_in_words(article.created_at) %> ago<p>
         </div>
         <p class="card-text">
