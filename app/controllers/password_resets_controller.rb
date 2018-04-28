@@ -7,7 +7,7 @@ class PasswordResetsController < ApplicationController
   end
 
   def create 
-    writer= Writer.find_by_email(params[:password_reset][:email])
+    writer= Writer.find_by_email(params[:password_reset][:email].downcase)
     if writer
       writer.send_password_reset
       flash[:success]= writer.password_reset_token

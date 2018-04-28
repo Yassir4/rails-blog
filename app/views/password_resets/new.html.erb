@@ -1,6 +1,7 @@
-<h1>Reset Password</h1>
-
+<h1 id= "reset-head-form">Reset Password</h1>
+<div id= "reset-form">
 <%= bootstrap_form_for :password_reset, url: password_resets_path do |f|%>
     <%= f.email_field :email %>
     <%= f.submit "Reset Password" %>
-<% end %>    
+<% end %>
+</div>
