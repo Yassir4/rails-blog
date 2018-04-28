@@ -22,7 +22,8 @@ Rails.application.routes.draw do
 
   resources :writers
   resource :sessions, only: [:new]
-  resources :articles   
+  resources :articles
+  resources :password_resets
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

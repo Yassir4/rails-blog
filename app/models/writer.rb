@@ -23,9 +23,14 @@ class Writer < ApplicationRecord
     following_relationships.find_by(following_id: writer_id).destroy
   end  
 
+  def send_password_reset
+    self.update_columns(password_reset_token: Writer.new_digest)
+    self.update_columns(password_reset_sent_at: Time.zone.now)
+    WriterMailer.reset_password_email(self).deliver
+  end
 
   class << self
-    def new_remember_token
+    def new_digest
       SecureRandom.urlsafe_base64
     end
   
@@ -41,8 +46,7 @@ class Writer < ApplicationRecord
   end
   
   def create_remember_token
-    self.remember_token = encrypt(Writer.new_remember_token)
+    self.remember_token = encrypt(Writer.new_digest)
   end
-  
-  
+
 end

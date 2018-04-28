@@ -1,0 +1,6 @@
+<h1>Reset Password</h1>
+<%= bootstrap_form_for @writer, :url => password_reset_path(params[:id]) do |f|%>
+    <%= f.password_field :password, help: "Must be at least 8 characters long", required: true%>
+    <%= f.password_field :password_confirmation, label: "Confirm Password", required: true %>
+    <%= f.submit "Reset My Password" %>
+<% end %>    

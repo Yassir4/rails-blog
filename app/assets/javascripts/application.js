@@ -21,7 +21,7 @@ $(document).ready(function() {
         var url = $('.pagination .next_page').attr('href');
         if (url && $(window).scrollTop() > $(document).height() - $(window).height() - 50) {
           console.log(url);
-          $('.pagination').text("Please Wait...");
+          $('p.next').text("Please Wait...");
           return $.getScript(url);
         }
       });

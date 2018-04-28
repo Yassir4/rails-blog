@@ -21,14 +21,14 @@ module SessionsHelper
     #the writer every time we need an info ex (current_user.id)
     # also sign in the writer with cookies
     def current_writer
-        # debugger
         if  !session[:writer_id].nil? 
             @current_writer ||= Writer.find(session[:writer_id]) 
         elsif ( remember_token =  cookies[:remember_token] )
             remember_token = Writer.encrypt(cookies[:remember_token])
             writer = Writer.find_by(remember_token: remember_token )
             if (writer)
-                session[:writer_id] = writer.id    
+                session[:writer_id] = writer.id
+                @current_writer = Writer.find(session[:writer_id])
             end        
         end    
     end
@@ -42,7 +42,7 @@ module SessionsHelper
     #used to remember the writer if checked the remember_me box
     # in the login form
     def remember(writer)
-        remember_token = Writer.new_remember_token
+        remember_token = Writer.new_digest
         cookies.permanent[:remember_token] = remember_token
         writer.update_attribute(:remember_token, Writer.encrypt(remember_token))
     end
@@ -50,5 +50,10 @@ module SessionsHelper
     def logout_writer
         session[:writer_id] = nil
         cookies.delete :remember_token
+    end
+
+    def login(writer)
+        session[:writer_id]= writer.id
+        redirect_to writer
     end
 end
