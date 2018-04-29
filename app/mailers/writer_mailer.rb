@@ -10,4 +10,10 @@ class WriterMailer < ApplicationMailer
     @greeting = "Hi"
     mail to: @writer.email, :subject => 'Reset password instructions'
   end
+
+  def confirmation_email(writer)
+    @writer = writer
+    @greeting = "Hi"
+    mail to: @writer.email, :subject => 'Email confirmation'
+  end
 end

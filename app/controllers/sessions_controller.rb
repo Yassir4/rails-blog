@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 
   def create   
     writer = Writer.find_by_email(params[:session][:email].downcase)
-    if writer && writer.authenticate(params[:session][:password])
+    if writer && writer.authenticate(params[:session][:password]) && active_writer?(writer)
         # update the remember token in the cookies and in the DB
         session[:writer_id] = writer.id
         if params[:session][:remember_me] == '1'

@@ -1,8 +1,10 @@
 <h1 id= "reset-head-form">Reset Password</h1>
 <div id= "reset-form">
     <%= bootstrap_form_for @writer, :url => password_reset_path(params[:id]) do |f|%>
-        <%= f.password_field :password, help: "Must be at least 8 characters long", required: true%>
-        <%= f.password_field :password_confirmation, label: "Confirm Password", required: true %>
+        <%= f.password_field :password, help: "Must be at least 8 characters long", required: true,
+                                        :minlength => 8%>
+        <%= f.password_field :password_confirmation, label: "Confirm Password", required: true ,
+                                        :minlength => 8%>
         <%= f.submit "Reset My Password" %>
     <% end %>
 </div>

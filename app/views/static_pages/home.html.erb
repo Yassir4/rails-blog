@@ -32,8 +32,9 @@
   <div class= "Articles">
          <%= render 'shared/articles' %>  
   </div>
-  <p class="next">↓<p>
-  <%= will_paginate @articles %>
+    <div class="next">
+    <%= will_paginate @articles %>
+  <div>
 <% end %>
 
 

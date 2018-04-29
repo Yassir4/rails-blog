@@ -29,6 +29,12 @@ class Writer < ApplicationRecord
     WriterMailer.reset_password_email(self).deliver
   end
 
+  def send_confirmation_email
+    self.update_columns(active_token: Writer.new_digest)
+    WriterMailer.confirmation_email(self).deliver
+  end
+
+  
   class << self
     def new_digest
       SecureRandom.urlsafe_base64

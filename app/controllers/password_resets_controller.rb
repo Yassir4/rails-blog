@@ -10,7 +10,7 @@ class PasswordResetsController < ApplicationController
     writer= Writer.find_by_email(params[:password_reset][:email].downcase)
     if writer
       writer.send_password_reset
-      flash[:success]= writer.password_reset_token
+      flash[:success]= "Please check your inbox"
       redirect_to login_path
     else
       flash.now[:danger]= "Email not found"
@@ -19,17 +19,18 @@ class PasswordResetsController < ApplicationController
   end
 
   def edit
-    @writer = Writer.find_by_password_reset_token!(params[:id])
+    redirect_to root_url unless @writer= Writer.find_by_password_reset_token(params[:id])
   end
 
   def update 
-    @writer = Writer.find_by_password_reset_token!(params[:id])
-    if @writer.update_attributes(password_reset_params)
+    writer = Writer.find_by_password_reset_token!(params[:id])
+    if writer.update_attributes(password_reset_params)
       flash[:success]= "Password Updated"
-      login(@writer)
+      writer.update_columns(password_reset_token: nil)
+      login(writer)
     else
-      flash[:warning].now= "Invalid password"
-      render :edit
+      flash[:warning]= "Invalid password"
+      redirect_to edit_password_reset_url(params[:id])
     end
   end
 

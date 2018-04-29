@@ -1,12 +1,15 @@
 module SessionsHelper
     
 
-    # this methode is used in the view 
+    # this methode is used in the view
     # to check if the user is logged_in 
     def logged_in?
-        !current_writer.nil? 
+        !current_writer.nil?
     end
 
+    def active_writer?(writer)
+        writer.active?
+    end
     # used in the writers_contoller
     # to prevent unlogged_in users from accessing 
     # some pages
@@ -21,7 +24,7 @@ module SessionsHelper
     #the writer every time we need an info ex (current_user.id)
     # also sign in the writer with cookies
     def current_writer
-        if  !session[:writer_id].nil? 
+        if  !session[:writer_id].nil?
             @current_writer ||= Writer.find(session[:writer_id]) 
         elsif ( remember_token =  cookies[:remember_token] )
             remember_token = Writer.encrypt(cookies[:remember_token])
@@ -42,9 +45,9 @@ module SessionsHelper
     #used to remember the writer if checked the remember_me box
     # in the login form
     def remember(writer)
-        remember_token = Writer.new_digest
-        cookies.permanent[:remember_token] = remember_token
-        writer.update_attribute(:remember_token, Writer.encrypt(remember_token))
+            remember_token = Writer.new_digest
+            cookies.permanent[:remember_token] = remember_token
+            writer.update_attribute(:remember_token, Writer.encrypt(remember_token))
     end
     
     def logout_writer
@@ -53,7 +56,9 @@ module SessionsHelper
     end
 
     def login(writer)
-        session[:writer_id]= writer.id
-        redirect_to writer
+        if writer.active?
+            session[:writer_id]= writer.id
+            redirect_to writer
+        end
     end
 end

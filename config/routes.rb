@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   post '/login',to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 
+  get '/:token/confirm_email/', :to => "writers#confirm_email", as: 'confirm_email'
 
   get '/signup',  to: 'writers#new'
   post '/signup', to: 'writers#create'
@@ -24,6 +25,8 @@ Rails.application.routes.draw do
   resource :sessions, only: [:new]
   resources :articles
   resources :password_resets
+
+  match "*path", to: "static_pages#catch_404", via: :all
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

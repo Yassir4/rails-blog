@@ -5,7 +5,7 @@ class WritersController < ApplicationController
 
 
   def index
-    @writers = Writer.paginate(:page => params[:page], :per_page => 15)
+    @writers = Writer.where(active: true).paginate(:page => params[:page], :per_page => 15)
   end
 
 
@@ -15,7 +15,7 @@ class WritersController < ApplicationController
   end
 
   def new
-  
+    @writer= Writer.new
   end
 
 
@@ -26,12 +26,13 @@ class WritersController < ApplicationController
   def create
     @writer = Writer.new(writer_params)
     if @writer.save
-      session[:writer_id] = @writer.id
-      flash[:success] = "Account created successfully"
+      @writer.send_confirmation_email
+      flash[:info]= "Please confirm your email address to continue"
       redirect_to root_path
     else
       render :new
     end
+  
   end
 
   def destroy
@@ -40,6 +41,18 @@ class WritersController < ApplicationController
     flash[:success]= "Profile deleted"
     redirect_to writers_url
   end
+  
+  def confirm_email
+    writer = Writer.find_by_active_token(params[:token])
+    if writer
+      writer.update_columns(active: true)
+      flash[:success]= "Account created successfully"
+      login(writer)
+    else
+      redirect_to root_path
+    end
+  end
+
   private
 
   def writer_params

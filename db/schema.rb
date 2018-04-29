@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180427101357) do
+ActiveRecord::Schema.define(version: 20180428191102) do
 
   create_table "articles", force: :cascade do |t|
     t.integer "writer_id"
@@ -52,6 +52,8 @@ ActiveRecord::Schema.define(version: 20180427101357) do
     t.boolean "admin", default: false
     t.string "password_reset_token"
     t.datetime "password_reset_sent_at"
+    t.boolean "active", default: false
+    t.string "active_token"
   end
 
 end
