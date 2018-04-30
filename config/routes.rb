@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   resource :sessions, only: [:new]
   resources :articles
   resources :password_resets
+  resources :images, only: [:create]
 
   match "*path", to: "static_pages#catch_404", via: :all
 

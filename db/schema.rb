@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180428191102) do
+ActiveRecord::Schema.define(version: 20180430150950) do
 
   create_table "articles", force: :cascade do |t|
     t.integer "writer_id"
@@ -30,6 +30,12 @@ ActiveRecord::Schema.define(version: 20180428191102) do
     t.index ["follower_id", "following_id"], name: "index_follows_on_follower_id_and_following_id", unique: true
     t.index ["follower_id"], name: "index_follows_on_follower_id"
     t.index ["following_id"], name: "index_follows_on_following_id"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.text "image_data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "relationships", force: :cascade do |t|

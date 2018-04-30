@@ -1,5 +1,6 @@
 /*
  *= require rails_bootstrap_forms
+ *= require trix
  */
  @import "bootstrap"; 
 
@@ -251,7 +252,7 @@ p#title{
     cursor: default;
 }
 
-div.card{
+div.card{  
     width: 530px;
     margin-top: 20px;
     margin-left: 13px;
@@ -259,7 +260,9 @@ div.card{
     border-bottom: 1px solid rgba(0, 0, 0, 0.125)
     
 }
-p.card-text{
+.card-text{
+    
+    display: inline;
     height: 123px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -269,6 +272,13 @@ p.card-text{
     -webkit-line-clamp: 2; /* number of lines to show */
     -webkit-box-orient: vertical;
     font-family: 'q_serif',Georgia,Times,"Times New Roman","Hiragino Kaku Gothic Pro","Meiryo",serif;
+}
+.card-text div{
+    display: flex;
+}
+.card-text img{
+    width: 150px;
+    height: 130px;
 }
 .writer-info{
     margin-bottom: 10px;

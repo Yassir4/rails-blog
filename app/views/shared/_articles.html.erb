@@ -7,9 +7,9 @@
             <%=link_to article.writer.name, article.writer %>
             <p>Written <%=  time_ago_in_words(article.created_at) %> ago<p>
         </div>
-        <p class="card-text">
-        <%= article.body[0..313] %>
-        ... </p>
+        <div class="card-text">
+            <%=sanitize article.body %>
+        ... </div>
          
         <%= link_to "Read More", article, class: 'card-link' %>
         <% if current_writer?(article.writer) %>

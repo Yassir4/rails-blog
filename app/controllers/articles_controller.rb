@@ -3,6 +3,7 @@ class ArticlesController < ApplicationController
     before_action :correct_writer, only: [:edit, :update, :destroy]
 
     def new
+        @article= Article.new
     end
     
     def edit
