@@ -14,6 +14,8 @@
 // = require bootstrap
 // = require rails-ujs
 // = require turbolinks
+//= require trix
+//= require trix_attachments
 // = require_tree .
 $(document).ready(function() {
     if ($('.next').length) {
