@@ -1,32 +1,22 @@
 # Rails Blog
 
 
-## Installation
+## Running
 
  clone the repo
 ```
 https://github.com/Yassir4/rails-blog.git
 ```
-
+setup
 ```
-$ bundle install 
-```
-
-next 
-
-```
-$ rails db:migrate
-$ rails db:seed
+$ docker-compose run --rm -u root web bash -c "mkdir -p /bundle/vendor && chown railsuser /bundle/vendor"
+$ docker-compose run --rm web bundle install
+$ docker-compose run --rm web bundle exec rake db:setup
 ```
 
-run the test suite to verify that everything is working correctly:
+Run:
+```
+$ docker-compose up web
+```
 
-```
-$ rspec spec
-```
-
-If the test suite passes, you'll be ready to run the app in a local server:
-
-```
-$ rails server
-```
+And go to localhost:3000.
