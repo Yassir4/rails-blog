@@ -6,13 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 writer = Writer.create(name: 'Hartani Yassir', email: 'hartaniyassir@gmail.com',
-                        password: '12345678', admin: true)
+                        password: '12345678', admin: true, active: true)
 
 
 # create writers
 for i in 0..50 do
     Writer.create!(name: "userName#{i}", email: "email@example#{i}.com",
-                        password: "12345678")
+                        password: "12345678", active: true)
 end
 # create article for the admin
 for i in 0..10 do 

@@ -29,8 +29,8 @@
         <p id= "title">Feeds</p>
         <ul>
             <li>Articles</li>
-            <li>Followers</li>
-            <li>Following</li>
+            <li><%= @writer.followers.count%> Followers </li>
+            <li><%= @writer.following.count%> Following </li>
             <li>Topics</li>
         </ul>
     </div>

@@ -5,7 +5,7 @@
 
  clone the repo
 ```
-https://github.com/Yassir4/rails-blog.git
+git clone https://github.com/Yassir4/rails-blog.git
 ```
 setup
 ```
