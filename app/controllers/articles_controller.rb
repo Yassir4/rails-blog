@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-
+    before_action :logged_in_writer?
     before_action :correct_writer, only: [:edit, :update, :destroy]
 
     def new

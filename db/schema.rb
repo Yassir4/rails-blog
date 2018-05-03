@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20180430150950) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "articles", force: :cascade do |t|
     t.integer "writer_id"
     t.text "body"
@@ -20,16 +23,6 @@ ActiveRecord::Schema.define(version: 20180430150950) do
     t.datetime "updated_at", null: false
     t.string "slug"
     t.index ["writer_id"], name: "index_articles_on_writer_id"
-  end
-
-  create_table "follows", force: :cascade do |t|
-    t.integer "following_id", null: false
-    t.integer "follower_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["follower_id", "following_id"], name: "index_follows_on_follower_id_and_following_id", unique: true
-    t.index ["follower_id"], name: "index_follows_on_follower_id"
-    t.index ["following_id"], name: "index_follows_on_following_id"
   end
 
   create_table "images", force: :cascade do |t|

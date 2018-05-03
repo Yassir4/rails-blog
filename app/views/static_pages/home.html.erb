@@ -32,9 +32,11 @@
   <div class= "Articles">
          <%= render 'shared/articles' %>  
   </div>
+  <% if @articles.count > 15 %>
     <div class="next">
-    <%= will_paginate @articles %>
-  <div>
+      <%= will_paginate @articles %>
+    <div>
+  <%end%>
 <% end %>
 
 
