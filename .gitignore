@@ -24,3 +24,6 @@
 
 # Ignore sparkpost key file
 sparkpost_rails.rb
+
+config/database.yml
+config/secrets.yml

@@ -67,3 +67,9 @@ gem 'shrine'
 gem 'trix'
 gem 'responders'
 gem 'pg'
+
+gem 'capistrano', '~> 3.10', '>= 3.10.2'
+gem 'capistrano-rails', '~> 1.3', '>= 1.3.1'
+gem 'capistrano-passenger', '~> 0.2.0'
+
+gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.3'
