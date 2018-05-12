@@ -8,7 +8,7 @@ set :repo_url, "https://github.com/Yassir4/rails-blog.git"
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, "/home/deply/rails_blog"
+set :deploy_to, "/home/deploy/rails_blog"
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
